@@ -1,7 +1,9 @@
 package com.poly.asm_nv3.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,5 +42,18 @@ public class Account  implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
 	List<Authority> authorities;
+
+	private String encrypt(String plaintext) {
+		// use a secure encryption algorithm (e.g., AES) to encrypt the plaintext
+		// and return the encrypted result as a string
+		return plaintext;
+	}
+	public void generateActivationToken() {
+		String identifier = UUID.randomUUID().toString(); // generate a unique identifier
+		long timestamp = new Date().getTime(); // get the current timestamp
+		String plaintext = identifier + ":" + timestamp; // combine the identifier and timestamp
+		String token = encrypt(plaintext); // encrypt the combination
+		this.activation_token = token; // set the activation token on the account
+	}
 
 }

@@ -25,20 +25,34 @@
 									HỆ</a></li>
 						</ul>
 						<div class="user_option-box">
+						<th:block th:if="${#request.remoteUser}">
+							<div class="btn-group" >
+								<li type="button" class="dropdown-toggle" data-toggle="dropdown"
+									aria-expanded="false"><span class="fa fa-user"></span>
+									<span class="caret">[[${#request.remoteUser}]]</span></li>
+								<div class="dropdown-menu dropdown-menu-right " style="width: 250px">
+									<li>Trang Cá Nhân</li>
+									<li>Đổi Mật Khẩu</li>
+								<a th:href="@{/auth/logoff}"></a>	<li >Đăng Xất</li>
+									<li>Đơn Hàng Đã Mua</li>
+
+								</div>
+							</div>
+						</th:block>
+
+						<th:block th:unless="${#request.remoteUser}">
 							<div class="btn-group">
 								<li type="button" class="dropdown-toggle" data-toggle="dropdown"
 									aria-expanded="false"><span class="fa fa-user"></span>
-									<span class="caret">${tenkh}</span></li>
+									<span class="caret">Đăng Nhập</span></li>
 								<div class="dropdown-menu dropdown-menu-right " style="width: 250px">
-							<li>${dn}</li>
-
-							<li>${qk}</li>
-							<li>${dk}</li>
 
 
-						</div>
+								</div>
 							</div>
-							
+						</th:block>
+
+
 							<a href="/dathang"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 							<a href="/cart"> <i class="fa fa-cart-plus"
 								aria-hidden="false"></i>

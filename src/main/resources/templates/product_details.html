@@ -49,7 +49,7 @@
 
 		<div class="card">
 			<div class="container-fliud">
-				<form method="post" action="/addtocart/${item.masp}">
+				<form method="post" >
 					<input type="hidden" name="sp_ma" id="sp_ma" value="5"> <input
 						type="hidden" name="sp_ten" id="sp_ten"
 						value="Samsung Galaxy Tab 10.1 3G 16G"> <input
@@ -60,13 +60,13 @@
 						<div class="preview col-md-6">
 							<div class="preview-pic tab-content">
 								<div class="tab-pane" id="pic-1">
-									<img src="/images/${items.hinhanh}">
+									<img th:src="@{|${product.image}|}">
 								</div>
 								<div class="tab-pane" id="pic-2">
-									<img src="/images/${items.hinhanh}">
+									<img th:src="@{|${product.image}|}">
 								</div>
 								<div class="tab-pane active" id="pic-3">
-									<img src="/images/${items.hinhanh}">
+									<img th:src="@{|${product.image}|}">
 								</div>
 							</div>
 
@@ -179,7 +179,7 @@
 
 	<!-- end contact section -->
 	<!-- footer section -->
-	<%@include file="/WEB-INF/views/footer/footer.jsp"%>
+<!--	<%@include file="/WEB-INF/views/footer/footer.jsp"%>-->
 
 	<script src="/js/jquery-3.4.1.min.js"></script>
 	<script src="/js/bootstrap.js"></script>

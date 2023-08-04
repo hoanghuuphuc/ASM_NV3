@@ -1,0 +1,143 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+<title>Đăng nhập</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+<link rel="stylesheet" href="/css/sign-in.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp">
+
+	<section class="ftco-section ">
+		<div class="container" ng-controller="myctrl">
+			<div class="row justify-content-center  align-items-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img"
+							style="background-image: url(/images/bglogin.jpg);"></div>
+						<div class="login-wrap p-4 p-md-5">
+							<div class="d-flex">
+								<div class="w-100">
+									<h3 class="mb-4">Đăng Nhập</h3>
+								</div>
+								<div class="w-100">
+									<p class="social-media d-flex justify-content-end">
+										<a href="#"
+											class="social-icon d-flex align-items-center justify-content-center"><span
+											class="fa fa-facebook"></span></a> <a href="#"
+											class="social-icon d-flex align-items-center justify-content-center"><span
+											class="fa fa-google"></span></span></a>
+									</p>
+								</div>
+							</div>
+							<form action="/auth/signin" method="post"
+								enctype="multipart/form-data" class="signin-form" name="formdn">
+								<div class="form-group mb-3">
+									<label class="label" for="name">Tên đăng nhập</label> <input
+										type="text" class="form-control" name="username" id="name" placeholder="Username"
+										 required /> <small
+										ng-show="formdn.name.$invalid" id="fullnamehelpId"
+										class="form-text text-muted">Vui lòng tên đăng nhập</small>
+
+								</div>
+								<div class="form-group mb-3">
+									<label class="label" for="password">Mật khẩu</label> <input
+										type="password" class="form-control" placeholder="Password"
+										name="password" required  /> <small
+										ng-show="formdn.pass.$invalid" id="fullnamehelpId"
+										class="form-text text-muted">Vui lòng nhập mật khẩu</small>
+								</div>
+								<span style="color: red " th:text="${message}"></span>
+								<div class="form-group">
+									<button
+										class="form-control btn btn-primary rounded submit px-3">Đăng
+										nhập</button>
+								</div>
+								<div class="form-group d-md-flex">
+									<div class="w-50 text-left">
+										<label class="checkbox-wrap checkbox-primary mb-0">Nhớ
+											mật khẩu <input type="checkbox" value="true" name="remember">
+											<span class="checkmark"></span>
+										</label>
+									</div>
+									<div class="w-50 text-md-right">
+										<a href="/account/forgot-pass">Quên mật khẩu?</a>
+									</div>
+								</div>
+							</form>
+							<p class="text-center">
+								Not a member? <a href="/account/sign-up">Đăng kí</a>
+							</p>
+							${message}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/popper.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/main.js"></script>
+	<script>
+		
+		var app = angular.module('myapp', []);
+
+		app.controller('myctrl', function($scope) {
+
+		});
+	</script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		function removeSuccessParamFromURL() {
+		    if (window.history && window.history.replaceState) {
+		        var url = window.location.href;
+		        var urlParams = new URLSearchParams(window.location.search);
+		        urlParams.delete('success');
+		        var newURL = url.split('?')[0] + '?' + urlParams.toString();
+		        window.history.replaceState({}, '', newURL);
+		    }
+		}
+				// Kiểm tra query parameter và hiển thị thông báo thành công
+				window.onload = function() {
+					var urlParams = new URLSearchParams(window.location.search);
+					var successParam = urlParams.get('success');
+					 if (successParam === 'thatbai') {
+						 showFailMessage("Đăng nhập thất bại");
+						removeSuccessParamFromURL();
+					}if(successParam === 'doimktc'){
+						showSuccessMessage("Đổi mật khẩu thành công");
+						removeSuccessParamFromURL();
+					}
+					if(successParam === 'dktc'){
+						showSuccessMessage("Đăng kí tài khoản thành công");
+						removeSuccessParamFromURL();
+					}
+				}
+	
+				function showFailMessage(message) {
+					swal("Thông báo", message, "error");
+				}
+				function showSuccessMessage(message) {
+					swal("Thông báo", message, "success");
+				}
+			</script>
+</body>
+
+</html>

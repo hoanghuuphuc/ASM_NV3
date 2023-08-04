@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!-- Basic -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Mobile Metas -->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<!-- Site Metas -->
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+
+<title>Timups</title>
+
+
+<!-- bootstrap core css -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<!--owl slider stylesheet -->
+<link rel="stylesheet" type="text/css"
+	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<!-- font awesome style -->
+<link href="/css/font-awesome.min.css" rel="stylesheet" />
+
+<!-- Custom styles for this template -->
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+
+<!-- responsive style -->
+<link href="/css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+	<div class="hero_area">
+		<div class="hero_social">
+			<a href=""> <i class="fa fa-facebook" aria-hidden="true"></i>
+			</a> <a href=""> <i class="fa fa-twitter" aria-hidden="true"></i>
+			</a> <a href=""> <i class="fa fa-linkedin" aria-hidden="true"></i>
+			</a> <a href=""> <i class="fa fa-instagram" aria-hidden="true"></i>
+			</a>
+		</div>
+		<!-- header section strats -->
+<!--		<%@include file="/WEB-INF/views/header/header.jsp"%>-->
+		<div th:replace="header/header.html"></div>
+		<!-- end header section -->
+		<!-- slider section -->
+		<section class="slider_section ">
+			<div id="customCarousel1" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div class="container-fluid ">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="detail-box">
+										<h1>Smart Watches</h1>
+										<p>Mẫu Forerunner 265 bao gồm hai biến thể Forerunner 265S
+											42mm và Forerunner 265 46mm. Mẫu 265S cung cấp thời lượng pin
+											lên đến 24 giờ ở chế độ GPS và tối đa 15 ngày ở chế độ
+											smartwatch. Trong khi đó, mẫu 265 cung cấp thời lượng pin lên
+											đến 20 giờ ở chế độ GPS và 13 ngày ở chế độ smartwatch.</p>
+										<div class="btn-box">
+											<a href="contact" class="btn1"> Liên hệ </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="img-box">
+										<img src="images/garmin.png" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item ">
+						<div class="container-fluid ">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="detail-box">
+										<h1>Smart Watches</h1>
+										<p>Garmin đã ra mắt một chiếc đồng hồ thông minh khác, có
+											tên là Forerunner 55, tập trung vào người chạy bộ và đặc biệt
+											là những người mới bắt đầu tham gia hoạt động này. Đồng hồ
+											cho phép người dùng theo dõi số liệu thống kê về hoạt động
+											chạy hoặc đi bộ của họ theo thời gian.</p>
+										<div class="btn-box">
+											<a href="" class="btn1"> Liên hệ </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="img-box">
+										<img src="images/Garmin3.png" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item ">
+						<div class="container-fluid ">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="detail-box">
+										<h1>Smart Watches</h1>
+										<p>Đồng hồ đeo tay thông minh hay smartwatch là một thiết
+											bị có chức năng, kiểu dáng, cách sử dụng cơ bản gần giống như
+											đồng hồ truyền thống nhưng được bổ sung thêm nhiều tính năng
+											thông minh giống như của smartphone như lên mạng, xem thông
+											báo hoặc đo nhịp tim. So với đồng hồ thông thường, các đồng
+											hồ thông minh còn có màn hình màu, khe cắm sim, thẻ nhớ hoặc
+											thậm chí tích hợp cả camera</p>
+										<div class="btn-box">
+											<a href="" class="btn1"> Liên hệ </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="img-box">
+										<img src="images/slider-img.png" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ol class="carousel-indicators">
+					<li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+					<li data-target="#customCarousel1" data-slide-to="1"></li>
+					<li data-target="#customCarousel1" data-slide-to="2"></li>
+				</ol>
+			</div>
+
+		</section>
+		<!-- end slider section -->
+	</div>
+
+	<!-- shop section -->
+
+	<section class="shop_section layout_padding">
+		<div class="container">
+			<div class="heading_container heading_center">
+				<h2>Mới nhất</h2>
+			</div>
+			<div class="row">
+
+					<div class="col-sm-6" th:each="product:${product}">
+						<a href="/product/${item.masp}">
+							<div class="box">
+								<div class="img-box">
+									<img th:src="@{|${product.image}|}" alt="">
+								</div>
+								<div class="detail-box">
+									<h6 th:text="${product.name}"></h6>
+									<h6>
+										Giá: <span th:text="${product.price}"></span>
+									</h6>
+								</div>
+								<div class="hover-content">
+									<a th:href="@{|/product/${product.id}|}" class="btn-detail">Xem Chi
+										Tiết</a>
+								</div>
+								<div class="new">
+									<span> Mới </span>
+								</div>
+							</div>
+						</a>
+					</div>
+
+			</div>
+			<div class="btn-box">
+				<a href="watches">Xem thêm </a>
+			</div>
+		</div>
+	</section>
+
+	<!-- end shop section -->
+
+	<!-- about section -->
+
+	<section class="about_section layout_padding">
+		<div class="container  ">
+			<div class="row">
+				<div class="col-md-6 col-lg-5 ">
+					<div class="img-box">
+						<img src="images/about-img.png" alt="">
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-7">
+					<div class="detail-box">
+						<div class="heading_container">
+							<h2>Giới thiệu</h2>
+						</div>
+						<p>Đồng hồ điện thoại thông minh ngoài mục đích chính là xem
+							giờ còn có thêm những tính năng vô cùng ưu việt. Có thể kể đến
+							như khả năng báo thức, xem notification hay kiểm tra smartphone.
+							Vậy cụ thể đồng hồ điện thoại thông minh là gì? Chúng tôi sẽ giúp
+							bạn tìm hiểu thông qua bài viết sau bạn nhé!</p>
+						<a href="">Đọc thêm </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- end about section -->
+
+	<!-- feature section -->
+
+	<section class="feature_section layout_padding">
+		<div class="container">
+			<div class="heading_container">
+				<h2>Tính năng</h2>
+				<p>Dưới đây là một số tính năng Smartwatch đem lại</p>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 col-lg-3">
+					<div class="box">
+						<div class="img-box">
+							<img src="images/f1.png" alt="">
+						</div>
+						<div class="detail-box">
+							<h5>Theo dõi sức khỏe</h5>
+							<p style="padding: 20px">Tính năng này sẽ xem xét sự chuyển
+								động của bạn để xác định bạn có đang bước đi hay không, sau đó
+								lần lượt sẽ tính được số bước đi đó và hiển thị cho bạn xem theo
+								thời gian thực.</p>
+							<a href=""> <span> Đọc thêm </span> <i
+								class="fa fa-long-arrow-right" aria-hidden="true"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<div class="box">
+						<div class="img-box">
+							<img src="images/f2.png" alt="">
+						</div>
+						<div class="detail-box">
+							<h5>Cảnh báo & Thông báo</h5>
+							<p style="padding: 30px">Tất cả các cuộc hẹn, cảnh báo của
+								bạn có thể được chuyển tới đồng hồ thông minh để cho dù bạn đang
+								chạy thể dục, chơi thể thao thì vẫn không bỏ lỡ các cuộc hẹn đó.</p>
+							<a href=""> <span> Đọc thêm </span> <i
+								class="fa fa-long-arrow-right" aria-hidden="true"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<div class="box">
+						<div class="img-box">
+							<img src="images/f3.png" alt="">
+						</div>
+						<div class="detail-box">
+							<h5>Nhắn tin</h5>
+							<p style="padding: 30px">Bạn có thể cài đặt rung trên đồng hồ
+								để khi có cuộc gọi hay tin nhắn đến, nó sẽ báo rung để bạn biết
+								mà không cần phải nhìn vào mặt đồng hồ.</p>
+							<a href=""> <span> Đọc thêm </span> <i
+								class="fa fa-long-arrow-right" aria-hidden="true"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<div class="box">
+						<div class="img-box">
+							<img src="images/f4.png" alt="">
+						</div>
+						<div class="detail-box">
+							<h5>Bluetooth</h5>
+							<p style="padding: 17px">Đây là chức năng không thể thiếu đối
+								với một chiếc đồng hồ đeo tay thông minh, đồng bộ danh bạ, thực
+								hiện cuộc gọi bluetooth, truyền tải dữ liệu từ điện thoại qua
+								đồng hồ đồng hồ thông minh.</p>
+							<a href=""> <span> Đọc thêm </span> <i
+								class="fa fa-long-arrow-right" aria-hidden="true"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btn-box">
+				<a href=""> Xem thêm </a>
+			</div>
+		</div>
+	</section>
+
+	<!-- end feature section -->
+
+	<!-- contact section -->
+
+	<section class="contact_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form_container">
+						<div class="heading_container">
+							<h2>LIÊN HỆ VỚI CHÚNG TÔI</h2>
+						</div>
+						<form action="">
+							<div>
+								<input type="text" placeholder="HỌ VÀ TÊN" />
+							</div>
+							<div>
+								<input type="email" placeholder="Email" />
+							</div>
+							<div>
+								<input type="text" placeholder="SỐ ĐIỆN THOẠI" />
+							</div>
+							<div>
+								<input type="text" class="message-box" placeholder="NỘI DUNG" />
+							</div>
+							<div class="d-flex ">
+								<button>GỬI</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="img-box">
+						<img src="images/contact-img.jpg" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- end contact section -->
+
+	<!-- client section -->
+	<section class="client_section layout_padding">
+		<div class="container">
+			<div class="heading_container heading_center">
+				<h2>Cảm nhận của khách hàng</h2>
+			</div>
+			<div class="carousel-wrap ">
+				<div class="owl-carousel client_owl-carousel">
+					<div class="item">
+						<div class="box">
+							<div class="img-box">
+								<img src="images/c1.jpg" alt="">
+							</div>
+							<div class="detail-box">
+								<div class="client_info">
+									<div class="client_name">
+										<h5>Mark Thomas</h5>
+										<h6>Khách hàng</h6>
+									</div>
+									<i class="fa fa-quote-left" aria-hidden="true"></i>
+								</div>
+								<p>Thiết kế chỉnh chu với màu sắc và kiểu dáng hiện đại.
+									Chất liệu dây đeo đồng hồ đa dạng, nhiều mẫu mã như dây
+									silicone, dây thép không gỉ,... Màn hình OLED cho hình ảnh hiển
+									thị sắc nét và màu sắc chân thực. Có khả năng chống nước, chống
+									bụi đạt đến tiêu chuẩn IPX6. Trang bị nhiều chế độ luyện tập
+									giúp nâng cao sức khỏe cho người dùng. Hỗ trợ đo và theo dõi
+									các chỉ số sức khỏe như: đo nhịp tim, đo huyết áp, calories
+									tiêu thụ, đếm bước chân,… Hỗ trợ nhắn tin và nghe gọi trực tiếp
+									trên đồng hồ. Thay đổi giao diện đồng hồ tùy theo sở thích.
+									Tương tác được với trợ lý ảo Siri để điều khiển đồng hồ bằng
+									giọng nói.</p>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="box">
+							<div class="img-box">
+								<img src="images/c2.jpg" alt="">
+							</div>
+							<div class="detail-box">
+								<div class="client_info">
+									<div class="client_name">
+										<h5>Alina Hans</h5>
+										<h6>Khách hàng</h6>
+									</div>
+									<i class="fa fa-quote-left" aria-hidden="true"></i>
+								</div>
+								<p>Tính thẩm mỹ cao, thiết kế hiện đại và thanh lịch. Màn
+									hình AMOLED tăng độ tương phản, giảm thiểu bóng mờ giúp người
+									dùng quan sát được nội dung hiển thị rõ hơn và màu sắc tự
+									nhiên. Có thể nhận cuộc gọi, nhắn tin và nhận thông báo ứng
+									dụng từ điện thoại ngay trên đồng hồ. Trang bị bộ cảm biến để
+									đo và theo dõi các chỉ số sức khỏe như: nhịp tim, điện tâm đồ,
+									huyết áp, tính quãng đường chạy,… Có khả năng chống bụi, chống
+									nước lên với tiêu chuẩn 5 ATM. Trang bị ngôn ngữ tiếng Việt phù
+									hợp cho người Việt sử dụng, nhất là những ai còn hạn chế về
+									ngôn ngữ.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end client section -->
+
+	<!-- footer section -->
+<!--	<%@include file="/WEB-INF/views/footer/footer.jsp"%>-->
+	<div th:replace="footer/footer.html"> </div>
+	<!-- footer section -->
+
+	<!-- jQery -->
+	<script src="/js/jquery-3.4.1.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+		function removeSuccessParamFromURL() {
+		    if (window.history && window.history.replaceState) {
+		        var url = window.location.href;
+		        var urlParams = new URLSearchParams(window.location.search);
+		        urlParams.delete('success');
+		        var newURL = url.split('?')[0] + '?' + urlParams.toString();
+		        window.history.replaceState({}, '', newURL);
+		    }
+		}
+				// Kiểm tra query parameter và hiển thị thông báo thành công
+				window.onload = function() {
+					var urlParams = new URLSearchParams(window.location.search);
+					var successParam = urlParams.get('success');
+					if (successParam === 'thanhcong') {
+						showSuccessMessage("Đăng nhập thành công");
+						removeSuccessParamFromURL();
+					}
+					/* if (successParam === 'editTT') {
+						showSuccessMessage("Sửa trạng thái đơn hàng thành công");
+					} */
+				}
+	
+				function showSuccessMessage(message) {
+					swal("Thông báo", message, "success");
+				}
+			</script>
+	<!-- owl slider -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous">
+		
+	</script>
+	<!-- bootstrap js -->
+	<script src="js/bootstrap.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+		
+	</script>
+	<!-- custom js -->
+	<script src="js/custom.js"></script>
+	<!-- Google Map -->
+	
+	<!-- End Google Map -->
+
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+	rel="stylesheet">
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/sign-up.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<style type="text/css">
+.error {
+	color: red;
+	font-style: italic;
+}
+
+.mess {
+	color: blue;
+	font-style: blod;
+}
+</style>
+</head>
+
+<body>
+	<section class="signup">
+		<div class="container">
+			<div class="signup-content">
+				<div class="signup-form">
+					<h2 class="form-title">Đăng kí</h2>
+					<form method="post" class="register-form" id="register-form" action="signup"
+						  th:object="${account}" onsubmit="return validateForm();">
+
+						<div class="form-group">
+							<label for="email"><i class="fa fa-envelope-o"></i></label>
+							<input type="email" id="email" name="username" placeholder="Tên Tài Khoản Gmail" />
+							<span id="email-error" class="error"></span>
+						</div>
+						<div class="form-group">
+							<label for="pass"><i class="fa fa-key"></i></label>
+							<input type="password" id="pass" name="password" placeholder="Mật khẩu" />
+							<span id="pass-error" class="error"></span>
+						</div>
+						<div class="form-group">
+							<label for="re-pass"><i class="fa fa-unlock-alt"></i></label>
+							<input type="password" name="repass" id="repass" placeholder="Xác nhận mật khẩu" />
+							<span id="repass-error" class="error"></span>
+						</div>
+
+						<div class="form-group form-button">
+							<button id="registerButton" type="submit" class="btn btn-primary m-3">Đăng ký</button>
+						</div>
+					</form>
+
+					<!-- Button trigger modal -->
+
+
+					<!-- Modal -->
+
+
+
+
+
+					<button class="btn btn-primary ">
+						<a href="/account/login"
+							style="color: white; text-decoration: none;"> Quay lại</a>
+					</button>
+
+
+				</div>
+
+			</div>
+			<div class="signup-image">
+				<figure>
+					<img src="/images/bg-sign-up.jpg" alt="sing up image">
+				</figure>
+
+			</div>
+		</div>
+		</div>
+	</section>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+
+
+	<script>
+		function validateForm() {
+			// Lấy giá trị nhập vào các trường
+			var email = document.getElementById("email").value;
+			var password = document.getElementById("pass").value;
+			var repass = document.getElementById("repass").value;
+
+			// Kiểm tra bỏ trống trường email và password
+			if (email.trim() === '') {
+				document.getElementById("email-error").innerText = "Vui lòng nhập Email.";
+				return false;
+			} else {
+				document.getElementById("email-error").innerText = "";
+			}
+
+			if (password.trim() === '') {
+				document.getElementById("pass-error").innerText = "Vui lòng nhập Mật khẩu.";
+				return false;
+			} else {
+				document.getElementById("pass-error").innerText = "";
+			}
+
+			// Kiểm tra định dạng email (dùng regex)
+			var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (!email.match(emailRegex)) {
+				document.getElementById("email-error").innerText = "Email không hợp lệ.";
+				return false;
+			} else {
+				document.getElementById("email-error").innerText = "";
+			}
+
+			// Kiểm tra hai mật khẩu phải khớp nhau
+			if (password !== repass) {
+				document.getElementById("repass-error").innerText = "Mật khẩu không khớp.";
+				return false;
+			} else {
+				document.getElementById("repass-error").innerText = "";
+			}
+
+			// Nếu không có lỗi, cho phép submit form
+			return true;
+		}
+	</script>
+
+</body>
+
+</html>

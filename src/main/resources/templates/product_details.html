@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<title>Chi tiết sản phẩm</title>
+<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="/css/DetailsProduct_UpdateAccount.css"
+	type="text/css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<!-- bootstrap core css -->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<!--owl slider stylesheet -->
+<link rel="stylesheet" type="text/css"
+	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+<!-- Custom styles for this template -->
+<link href="/css/style.css" rel="stylesheet" />
+<!-- responsive style -->
+<link href="/css/responsive.css" rel="stylesheet" />
+
+
+</head>
+<body class="sub_page">
+
+	<div class="hero_area">
+
+		<!-- header section strats -->
+
+		<div th:replace="header/header.html"></div>
+		<!-- end header section -->
+	</div>
+
+	<!-- contact section -->
+
+	<div class="container mt-4">
+		<div id="thongbao" class="alert alert-danger d-none face" role="alert">
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+		</div>
+
+		<div class="card">
+			<div class="container-fliud">
+				<form method="post" action="/addtocart/${item.masp}">
+					<input type="hidden" name="sp_ma" id="sp_ma" value="5"> <input
+						type="hidden" name="sp_ten" id="sp_ten"
+						value="Samsung Galaxy Tab 10.1 3G 16G"> <input
+						type="hidden" name="sp_gia" id="sp_gia" value="10990000.00">
+					<input type="hidden" name="hinhdaidien" id="hinhdaidien"
+						value="samsung-galaxy-tab-10.jpg">
+					<div class="wrapper row">
+						<div class="preview col-md-6">
+							<div class="preview-pic tab-content">
+								<div class="tab-pane" id="pic-1">
+									<img src="/images/${items.hinhanh}">
+								</div>
+								<div class="tab-pane" id="pic-2">
+									<img src="/images/${items.hinhanh}">
+								</div>
+								<div class="tab-pane active" id="pic-3">
+									<img src="/images/${items.hinhanh}">
+								</div>
+							</div>
+
+						</div>
+						<div class="details col-md-6">
+							<div class="title">
+								<h3 class="product-title" th:text="${product.name}"></h3>
+								<p class="product-description">
+								<ul>
+									<li>100% hàng chính hãng, cam kết 1 đổi 1.</li>
+									<li>Bảo hành 2 năm cho tất cả sản phẩm</li>
+
+									<li>Thu cũ đổi mới tặng thêm 1,000,000đ.</li>
+									<li>Thay pin trọn đời</li>
+								</ul>
+								</p>
+
+								
+								<h4 class="price">
+									Giá: <span th:text="${product.price}"></span>
+								</h4>
+								<p class="vote">
+									<strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo
+									<strong>Uy tín</strong>!
+								</p>
+
+							</div>
+							<div class="card">
+								<h4>Thông tin chi tiết về Sản phẩm</h4>
+								<div class="row">
+									<div class="col"></div>
+
+								</div>
+							</div>
+							<div class="row mt-3">
+
+
+								<label for="soluong"><h5>Số lượng:</h5></label> <input
+									type="number" class="form-control mr-3" id="soluong"
+									name="soluong" value="1" style="width: 55px;" min="1">
+
+								<button type="submit" formaction="/addtocart/${items.masp}"
+									class="add-to-cart btn btn-primary mr-2 text-white">
+									Thêm vào giỏ hàng</button>
+
+
+								<!-- </button> -->
+								<button type="submit" class="add-to-cart btn btn-danger  mr-3" formaction="/dathangngay/${items.masp}">Đặt Hàng</button>
+								
+								 <a href="/dathangngay/${items.masp}"
+									class="add-to-cart btn btn-danger  mr-3"> <i
+									class="fa Example of credit-card fa-credit-card"
+									aria-hidden="true"> </i>
+								</a>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</form>
+
+				<section class="shop_section layout_padding">
+					<div class="container">
+						<div class="heading_container heading_center">
+							<h2>SẢN PHẨM KHÁC</h2>
+						</div>
+
+						<div class="row">
+
+							<div class="col-sm-4" th:each="p:${productsSameCategory}">
+								<a th:href="@{|/product/${p.id}|}" >
+								<div class="box">
+									<a href="">
+										<div class="img-box">
+											<img th:src="@{|${p.image}|}">
+										</div>
+										<div class="detail-box">
+											<h6 th:text="${p.name}"></h6>
+											<h6>
+												Giá: <span th:text="${p.price}"> </span>
+											</h6>
+										</div>
+										<div class="new">
+											<span> Mới </span>
+										</div>
+									</a>
+								</div>
+								</a>
+							</div>
+
+
+							</div>
+						</div>
+					</div>
+					<div class="btn-box">
+						<a href="/watches">Xem Tất Cả</a>
+					</div>
+			</div>
+			</section>
+
+
+		</div>
+	</div>
+
+
+
+
+
+	<!-- end contact section -->
+	<!-- footer section -->
+	<%@include file="/WEB-INF/views/footer/footer.jsp"%>
+
+	<script src="/js/jquery-3.4.1.min.js"></script>
+	<script src="/js/bootstrap.js"></script>
+
+	<!-- owl slider -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+		
+	</script>
+	<!-- custom js -->
+	<script src="/js/custom.js"></script>
+	<!-- Google Map -->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+	<!-- End Google Map -->
+</body>
+
+
+</html>

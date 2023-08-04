@@ -24,7 +24,7 @@ public class SignupController {
     }
     @PostMapping
     public String signupaccount(Model m , @ModelAttribute("account") Account acc){
-        //222
+        //2223
         accountService.saveAccount(acc);
         return "account/sign-up";
     }

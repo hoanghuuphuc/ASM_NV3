@@ -17,7 +17,7 @@ public class MailModel {
     String[] attachments;
 
     public MailModel(String to, String subject, String body) {
-        this.from = "Crouse_Online <crouseonline@gmail.com>";
+        this.from = "NV3 <hoanghuuphuc8@gmail.com>";
         this.to = to;
         this.subject = subject;
         this.body = body;

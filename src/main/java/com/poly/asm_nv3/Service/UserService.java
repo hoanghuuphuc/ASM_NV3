@@ -17,10 +17,11 @@ public class UserService implements UserDetailsService {
     @Autowired
     AccountDAO accountDAO;
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
-            Account account = accountDAO.getById(username);
+            Account account = accountDAO.laytk(username);
             if (!account.getActive()) {
                 throw new UsernameNotFoundException(username + " is not active!");
             }

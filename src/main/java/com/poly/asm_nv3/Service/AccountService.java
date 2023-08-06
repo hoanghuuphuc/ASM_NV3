@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 
 
 public interface AccountService {
-    Account saveAccount(Account account);
+    Account saveAccount(Account account,String RoleId);
     Account findUsername(String TaiKhoan);
 
+    Account findToken(String token);
+    Account SaveAccountActive(Account account);
 
 }

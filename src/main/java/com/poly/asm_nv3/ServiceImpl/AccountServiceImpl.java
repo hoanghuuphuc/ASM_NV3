@@ -26,7 +26,7 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Override
-    public Account saveAccount(Account acc) {
+    public Account saveAccount(Account acc,String RoleId) {
         acc.setFullname("1");
         acc.setPhoto("1");
         acc.setActive(false);
@@ -35,21 +35,20 @@ public class AccountServiceImpl implements AccountService {
         String encodedPassword = passwordEncoder.encode(acc.getPassword());
         System.out.println(encodedPassword);
         acc.setPassword(encodedPassword);
-
         acc = accountDAO.save(acc);
 
-        // Now, associate the roles with the account using a for loop
-        List<String> roleIds = Arrays.asList("CUST"); // You can have a list of role IDs you want to associate with the account
+        if (acc.getAuthorities() == null || acc.getAuthorities().isEmpty()) {
+            // tạo vai trò khi tài khoản mới
+            if (RoleId != null) {
+                Authority authority = new Authority();
+                authority.setAccount(acc);
 
-        for (String roleId : roleIds) {
-            Authority authority = new Authority();
-            authority.setAccount(acc);
+                Role role = new Role();
+                role.setId(RoleId);
+                authority.setRole(role);
 
-            Role role = new Role();
-            role.setId(roleId);
-            authority.setRole(role);
-
-            authorityDAO.save(authority);
+                authorityDAO.save(authority);
+            }
         }
 
         return acc;
@@ -58,5 +57,18 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account findUsername(String TaiKhoan) {
         return accountDAO.laytk(TaiKhoan);
+    }
+
+    @Override
+    public Account findToken(String token) {
+        return accountDAO.findToken(token);
+    }
+
+    @Override
+    public Account SaveAccountActive(Account account) {
+        account.setActive(true);
+        account.setActivation_token(null);
+        account =accountDAO.save(account);
+        return account;
     }
 }

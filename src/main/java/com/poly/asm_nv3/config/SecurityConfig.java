@@ -35,9 +35,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // phan quyen su dung
         http.authorizeRequests()
-                .antMatchers("/admin/chuong","/admin/danh-muc","/admin/doasboard","/admin/khoa-hoc","/admin/noi-dung","/admin/order","/admin/payment","/admin/phan-quyen","/admin/code-khoahoc","/admin/quiz","/admin/quiz-add","/admin/tai-khoan").hasRole("Admin")
+                .antMatchers("/Admin").hasRole("Admin")
                 //		.antMatchers("/home/users").hasAnyRole("ADMIN","USER")
-                .antMatchers("/profile","/add-course/**","/my-courses","/checkout/**","/change-password","/quiz","/learning/**/**").authenticated()
+                .antMatchers("/checkout").authenticated()
                 .anyRequest().permitAll();// anonymous
 
         // dieu khien loi truy cap khong dung vai tro

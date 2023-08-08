@@ -27,7 +27,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account saveAccount(Account acc,String RoleId) {
-        acc.setFullname("1");
+        acc.setFullname(acc.getFullname());
         acc.setPhoto("1");
         acc.setActive(false);
         acc.generateActivationToken();

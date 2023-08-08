@@ -36,7 +36,11 @@
 					<h2 class="form-title">Đăng kí</h2>
 					<form method="post" class="register-form" id="register-form" action="signup"
 						  th:object="${account}" onsubmit="return validateForm();">
-
+						<div class="form-group">
+							<label for="email"><i class="fa fa-envelope-o"></i></label>
+							<input  id="ten" name="fullname" placeholder="Tên Khách hàng" />
+							<span id="ten-error" class="error"></span>
+						</div>
 						<div class="form-group">
 							<label for="email"><i class="fa fa-envelope-o"></i></label>
 							<input type="email" id="email" name="username" placeholder="Tên Tài Khoản Gmail" />
@@ -105,14 +109,24 @@
 			var email = document.getElementById("email").value;
 			var password = document.getElementById("pass").value;
 			var repass = document.getElementById("repass").value;
+			var ten = document.getElementById("ten").value;
 
 			// Kiểm tra bỏ trống trường email và password
+
+			if (ten.trim() === '') {
+				document.getElementById("ten-error").innerText = "Vui lòng nhập Tên.";
+				return false;
+			} else {
+				document.getElementById("ten-error").innerText = "";
+			}
+
 			if (email.trim() === '') {
 				document.getElementById("email-error").innerText = "Vui lòng nhập Email.";
 				return false;
 			} else {
 				document.getElementById("email-error").innerText = "";
 			}
+
 
 			if (password.trim() === '') {
 				document.getElementById("pass-error").innerText = "Vui lòng nhập Mật khẩu.";

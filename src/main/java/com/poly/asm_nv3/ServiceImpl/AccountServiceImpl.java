@@ -36,7 +36,6 @@ public class AccountServiceImpl implements AccountService {
         System.out.println(encodedPassword);
         acc.setPassword(encodedPassword);
         acc = accountDAO.save(acc);
-
         if (acc.getAuthorities() == null || acc.getAuthorities().isEmpty()) {
             // tạo vai trò khi tài khoản mới
             if (RoleId != null) {

@@ -42,5 +42,5 @@ public class Product  implements Serializable{
 	List<OrderDetail> orderDetails;
 
 	@OneToMany(mappedBy = "product")
-	List<ProductSize>productSizes;
+	List<ProductColor>productColors;
 }

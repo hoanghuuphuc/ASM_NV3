@@ -9,5 +9,6 @@ public interface ProductService {
     List<Product> findAll();
     Product findid(int id);
     List<Product> findByCategory(int id);
+    Product findById(Integer id);
 
 }

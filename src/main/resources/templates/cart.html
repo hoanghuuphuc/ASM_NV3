@@ -1,7 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!doctype html>
 <html lang="en">
 
@@ -35,6 +32,8 @@
 <!-- responsive style -->
 <link href="/css/responsive.css" rel="stylesheet" />
 <link href="/css/stylegh.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 <style type="text/css">
 .center-btn {
 	display: block;
@@ -44,8 +43,8 @@
 }
 </style>
 </head>
-<body>
-	<%@include file="/WEB-INF/views/header/header.jsp"%>
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+<div th:replace="header/header.html"></div>
 	<section class="breadcrumb-section bg-white">
 		<div class="container">
 			<div class="row">
@@ -73,52 +72,41 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:set var="tongTien" value="0" />
-								<c:forEach var="item" items="${cart}">
-									<form action="/updateQuantity" method="post">
-										<tr>
+										<tr ng-repeat="item in cart.items">
 											<td class="shoping__cart__item"><img
-												src="/images/${item.sanpham.hinhanh}" alt="">
-												<h5>${item.sanpham.tensp}</h5></td>
-											<td class="shoping__cart__price"><fmt:formatNumber
-													value="${item.sanpham.gia}" pattern="#,### đ" /></td>
+												src="{{item.image}}" alt="">
+												<h5>{{item.name}}</h5></td>
+											<td class="shoping__cart__price">{{item.price}}</td>
 											<td class="shoping__cart__quantity">
 												<div class="quantity">
 													<div class="pro-qty">
-														<button class="btn btn-link px-2"
-															onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-															<i class="fas fa-minus"></i>
-														</button>
-														<input id="form1" min="1" name="soluong"
-															value="${item.soluong}" type="number"
-															onblur="this.form.submit()"
-															class="form-control form-control-sm" style="width: 50px"
-															readonly onkeydown="return false;" />
-														<button class="btn btn-link px-2"
-															onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-															<i class="fas fa-plus"></i>
+
+														<input ng-change="cart.saveToLocalStorege()" ng-model="item.qty"
+																id="form1" min="1" name="soluong"
+															value="{{item.qty}}" type="number"
+
+															  />
+
 														</button>
 													</div>
 												</div>
 											</td>
-											<c:set var="soluong" value="${item.soluong}" />
-											<c:set var="gia" value="${item.sanpham.gia}" />
-											<c:set var="tongGia" value="${soluong * gia}" />
-											<c:set var="tongTien" value="${tongTien + tongGia}" />
-											<td class="shoping__cart__total"><fmt:formatNumber
-													value="${tongGia}" pattern="#,### đ" /></td>
-											<td class="shoping__cart__item__close"><a
-												href="/delete/${item.id}" class="text-muted"><i
-													class="fa fa-times-circle" aria-hidden="true"></i></a>
-											<td><input type="hidden" name="id" value="${item.id}">
+
+											<td class="shoping__cart__total">{{item.qty*item.price|number:2}}</td>
+											<td class="shoping__cart__item__close">
+												<a class="text-muted" ng-click="cart.removeItem(item.id)">
+													<i class="fa fa-times-circle" aria-hidden="true"></i>
+												</a>
+											</td>
+
 
 
 											</td>
 
 
 										</tr>
-									</form>
-								</c:forEach>
+								
+								
 
 							</tbody>
 						</table>
@@ -230,6 +218,7 @@
 			swal("Thông báo", message, "success");
 		}
 	</script>
+<script src="/js/shopping-cart-app.js"></script>
 	<!-- owl slider -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

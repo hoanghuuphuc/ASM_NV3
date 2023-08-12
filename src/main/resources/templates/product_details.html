@@ -24,10 +24,10 @@
 <link href="/css/style.css" rel="stylesheet" />
 <!-- responsive style -->
 <link href="/css/responsive.css" rel="stylesheet" />
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 
 </head>
-<body class="sub_page">
+<body class="sub_page" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
 
 	<div class="hero_area">
 
@@ -49,7 +49,7 @@
 
 		<div class="card">
 			<div class="container-fliud">
-				<form method="post" >
+
 					<input type="hidden" name="sp_ma" id="sp_ma" value="5"> <input
 						type="hidden" name="sp_ten" id="sp_ten"
 						value="Samsung Galaxy Tab 10.1 3G 16G"> <input
@@ -88,6 +88,12 @@
 								<h4 class="price">
 									Giá: <span th:text="${product.price}"></span>
 								</h4>
+								Màu Sắc <br>
+<!--								<div th:each="p:${productColors}">-->
+<!--									<input type="radio" name="color" >-->
+<!--									<span th:text="${p.color}"></span>-->
+
+<!--								</div>-->
 								<p class="vote">
 									<strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo
 									<strong>Uy tín</strong>!
@@ -104,11 +110,11 @@
 							<div class="row mt-3">
 
 
-								<label for="soluong"><h5>Số lượng:</h5></label> <input
-									type="number" class="form-control mr-3" id="soluong"
-									name="soluong" value="1" style="width: 55px;" min="1">
+								<label for="soluong"><h5>Số lượng:</h5></label>
+								<input type="number" class="form-control mr-3" id="soluong" name="soluong" value="1" style="width: 55px;" min="1">
 
-								<button type="submit" formaction="/addtocart/${items.masp}"
+
+								<button type="submit" th:attr="ng-click=@{|cart.add(${product.id})|}"
 									class="add-to-cart btn btn-primary mr-2 text-white">
 									Thêm vào giỏ hàng</button>
 
@@ -128,7 +134,7 @@
 
 					</div>
 
-				</form>
+
 
 				<section class="shop_section layout_padding">
 					<div class="container">
@@ -180,7 +186,7 @@
 	<!-- end contact section -->
 	<!-- footer section -->
 <!--	<%@include file="/WEB-INF/views/footer/footer.jsp"%>-->
-
+	<script src="/js/shopping-cart-app.js"></script>
 	<script src="/js/jquery-3.4.1.min.js"></script>
 	<script src="/js/bootstrap.js"></script>
 

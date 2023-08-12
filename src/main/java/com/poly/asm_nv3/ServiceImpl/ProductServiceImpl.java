@@ -31,5 +31,10 @@ public class ProductServiceImpl implements ProductService {
         return productDAO.findByCategory(id);
     }
 
+    @Override
+    public Product findById(Integer id) {
+        return productDAO.findById(id).get();
+    }
+
 
 }

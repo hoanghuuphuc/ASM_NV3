@@ -6,17 +6,17 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "ProductsColor")
+@Table(name = "Productcolor")
 public class ProductColor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "Productsize")
-    ProductSize productSize;
-
-    String Color;
+    @JoinColumn(name = "Productid")
+    Product product;
+   @Column(name = "Color")
+    String color;
 
     String Quantity;
 }

@@ -1,0 +1,219 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+          crossorigin="anonymous">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+  <!-- Custom styles for this template -->
+  <link href="/css/style.css" rel="stylesheet" type="text/css" />
+
+  <!-- responsive style -->
+  <link href="/css/responsive.css" rel="stylesheet" />
+  <link href="/css/stylegh.css" rel="stylesheet" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style type="text/css">
+    .center-btn {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+<div th:replace="header/header.html"></div>
+<section class="breadcrumb-section bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="">
+          <h2>Thanh Toán</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="shoping-cart spad bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="shoping__cart__table">
+          <table>
+            <thead>
+            <tr>
+              <th class="shoping__product">Sản phẩm</th>
+              <th>Giá</th>
+              <th>Số lượng</th>
+              <th>Tổng tiền</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in cart.items">
+              <td class="shoping__cart__item"><img
+                      src="{{item.image}}" alt="">
+                <h5>{{item.name}}</h5></td>
+              <td class="shoping__cart__price">{{item.price}}</td>
+              <td class="shoping__cart__quantity">
+                <div class="quantity">
+                  <div class="pro-qty">
+
+                    <input ng-change="cart.saveToLocalStorege()" ng-model="item.qty"
+                           id="form1" min="1" name="soluong"
+                           value="{{item.qty}}" type="number"
+
+                    />
+
+                    </button>
+                  </div>
+                </div>
+              </td>
+
+              <td class="shoping__cart__total">{{item.qty*item.price|number:2}}</td>
+              <td class="shoping__cart__item__close">
+                <a class="text-muted" ng-click="cart.removeItem(item.id)">
+                  <i class="fa fa-times-circle" aria-hidden="true"></i>
+                </a>
+              </td>
+
+
+
+              </td>
+
+
+            </tr>
+
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+      <div class="row">
+
+        <div class="col-lg-12">
+
+        </div>
+        <div class="col-lg-6">
+          <div class="shoping__continue">
+
+            <div class="row">
+              <h4 class="m-3">Thông tin khách hàng</h4>
+              <div class="col">
+                <label for="">Tài Khoản:</label>
+                <div class="form-control" id="username">[[${#request.remoteUser}]]</div>
+                <br> <label
+                      for="">Địa chỉ nhận hàng:</label>
+                <textarea ng-model="order.address" class="form-control"></textarea>
+                <br>
+              </div>
+
+              <div class="col">
+
+                <label for="">Ngày Đặt Hàng:</label>
+                <div class="form-control">{{order.createDate|date:'dd-MM-yyyy'}}</div>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="shoping__checkout">
+
+            <h5>Tổng tiền giỏ hàng</h5>
+            <ul>
+
+              <li>Tổng tiền sản phẩm <span>{{cart.amount}}</span></li>
+
+
+              <button class="btn btn-warning center-btn" ng-click="order.purchase()"
+                      style="width: 300px">Đặt hàng</button>
+
+
+            </ul>
+
+          </div>
+        </div>
+
+      </div>
+
+  </div>
+</section>
+<div th:replace="/footer/footer.html"></div>
+
+
+<!-- jQery -->
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+  function removeSuccessParamFromURL() {
+    if (window.history && window.history.replaceState) {
+      var url = window.location.href;
+      var urlParams = new URLSearchParams(window.location.search);
+      urlParams.delete('success');
+      var newURL = url.split('?')[0] + '?' + urlParams.toString();
+      window.history.replaceState({}, '', newURL);
+    }
+  }
+  // Kiểm tra query parameter và hiển thị thông báo thành công
+  window.onload = function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var successParam = urlParams.get('success');
+    if (successParam === 'true') {
+      showSuccessMessage("Thêm sản phẩm thành công");
+      removeSuccessParamFromURL();
+    }if (successParam === 'xoasp') {
+      showSuccessMessage("Xóa sản phẩm thành công");
+      removeSuccessParamFromURL();
+    }
+  }
+
+  function showSuccessMessage(message) {
+    swal("Thông báo", message, "success");
+  }
+</script>
+<script src="/js/shopping-cart-app.js"></script>
+<!-- owl slider -->
+<script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous">
+
+</script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.js"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+
+</script>
+
+<!-- custom js -->
+<script src="js/custom.js"></script>
+</body>
+
+</html>

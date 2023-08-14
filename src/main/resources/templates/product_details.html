@@ -89,11 +89,11 @@
 									Giá: <span th:text="${product.price}"></span>
 								</h4>
 								Màu Sắc <br>
-<!--								<div th:each="p:${productColors}">-->
-<!--									<input type="radio" name="color" >-->
-<!--									<span th:text="${p.color}"></span>-->
+								<div th:each="p:${productColors}">
+									<input type="radio" name="color" th:value="${p.color}">
+									<span th:text="${p.color}"></span>
 
-<!--								</div>-->
+								</div>
 								<p class="vote">
 									<strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo
 									<strong>Uy tín</strong>!

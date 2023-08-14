@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/Admin").hasRole("Admin")
                 //		.antMatchers("/home/users").hasAnyRole("ADMIN","USER")
-                .antMatchers("/checkout").authenticated()
+                .antMatchers("/order/checkout").authenticated()
                 .anyRequest().permitAll();// anonymous
 
         // dieu khien loi truy cap khong dung vai tro

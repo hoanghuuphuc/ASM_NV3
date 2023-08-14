@@ -98,96 +98,35 @@
 													<i class="fa fa-times-circle" aria-hidden="true"></i>
 												</a>
 											</td>
-
-
-
 											</td>
-
-
 										</tr>
-								
-								
 
 							</tbody>
 						</table>
+						<h3>Tổng Tiền: {{cart.amount}}</h3>
 					</div>
 				</div>
 			</div>
-			<form action="/thanhtoan" method="post">
+
 				<div class="row">
 
 					<div class="col-lg-12">
-						<div class="shoping__cart__btns ">
-							<a href="/watches"
-								class="primary-btn cart-btn bg-success text-white">Mua thêm</a>
+						<div class="shoping__cart__btns col-sm-3">
+							<a href="/order/checkout"
+								class="primary-btn cart-btn bg-success text-white">Thanh Toán</a>
 						</div>
+
+
 					</div>
-					<div class="col-lg-6">
-						<div class="shoping__continue">
-							<div class="shoping__discount">
-								<h5>Đơn vị giao hàng</h5>
-								<form action="#">
-									<input type="text" placeholder="Shoppe 50,000đ" disabled="true">
-									<button type="submit" class="site-btn">Chọn</button>
-									<br>
-
-								</form>
 
 
-							</div>
-							<div class="row">
-								<h4 class="m-3">Thông tin khách hàng</h4>
-								<div class="col">
-									<label for="">Họ và tên:</label> <input type="text"
-										name="hoten" value="${hotenkh}" class="form-control"
-										placeholder="Họ tên" aria-label="name"><br> <label
-										for="">Địa chỉ nhận hàng:</label> <input type="text"
-										name="diachi" value="${diachi}" class="form-control"
-										placeholder="Xin vui lòng nhập địa chỉ của bạn"
-										aria-label="adress"><br>
-								</div>
-
-								<div class="col">
-
-									<label for="">Số điện thoại:</label> <input type="text"
-										name="sdt" value="${sdt}" class="form-control"
-										placeholder="Xin vui lòng nhập số điện thoại "
-										aria-label="phone"> <br> <label for="">Ghi
-										Chú:</label> <input type="text" class="form-control" name="ghichu"
-										aria-label="phone" value="Ghi Chú">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="shoping__checkout">
-
-							<h5>Tổng tiền giỏ hàng</h5>
-							<ul>
-								<li>Phí giao hàng <span>50,000đ</span></li>
-								<li>Tổng tiền sản phẩm <span><fmt:formatNumber
-											value="${tongTien}" pattern="#,### đ" /></span></li>
-								<c:set var="tongTien" value="${tongTien + 50000}" />
-
-								<li>Tộng cộng: <span> <fmt:formatNumber
-											value="${tongTien}" pattern="#,### đ" /></span></li>
-								<input type="hidden" name="tongTien" value="${tongTien}" />
-								<input type="hidden" name="idgiohang" value="${idgiohang}" />
-								<button type="submit" class="btn btn-warning center-btn"
-									style="width: 300px">Đặt hàng</button>
-
-
-							</ul>
-
-						</div>
-					</div>
 
 				</div>
-			</form>
+
 		</div>
 	</section>
-	<%@include file="/WEB-INF/views/footer/footer.jsp"%>
 
+<div th:replace="footer/footer.html"></div>
 	<!-- jQery -->
 	<script src="/js/jquery-3.4.1.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

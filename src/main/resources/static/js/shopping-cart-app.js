@@ -61,6 +61,7 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
     $scope.order={
         createDate:new Date(),
         address:"",
+        name:"",
         account:{username: $("#username").text()},
         get orderDetails(){
             return $scope.cart.items.map(item =>{
@@ -71,18 +72,25 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
                }
             })
         },
-        purchase(){
-            var order =angular.copy(this);
-            $http.post("/rest/orders",order).then(resp =>{
-                alert("Đặt Hàng thành công")
-                $scope.cart.clearAll();
-                location.href="/order/detail/"+resp.data.id;
-            }).catch(error =>{
-                alert("Đặt Hàng Lỗi")
-                console.log(error)
-            })
+        purchase() {
+            if (!this.order || !this.order.name || !this.order.address) {
+                alert("Vui lòng điền đầy đủ thông tin khách hàng.");
+                return;
+            }
 
+            var order = angular.copy(this.order);
+            $http.post("/rest/orders", order)
+                .then(resp => {
+                    alert("Đặt Hàng thành công");
+                    $scope.cart.clearAll();
+                    location.href = "/order/detail/" + resp.data.id;
+                })
+                .catch(error => {
+                    alert("Đặt Hàng Lỗi");
+                    console.log(error);
+                });
         }
+
     }
 
 

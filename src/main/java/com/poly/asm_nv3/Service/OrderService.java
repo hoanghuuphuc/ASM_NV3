@@ -12,4 +12,6 @@ public interface OrderService {
     Order findId(Long id);
 
     List<Order> findByUsername(String username);
+    Order findOrderByUsername(Long id,String username);
+    Order SaveSatus(Order order);
 }

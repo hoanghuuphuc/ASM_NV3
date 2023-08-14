@@ -127,16 +127,20 @@
               <div class="col">
                 <label for="">Tài Khoản:</label>
                 <div class="form-control" id="username">[[${#request.remoteUser}]]</div>
-                <br> <label
-                      for="">Địa chỉ nhận hàng:</label>
-                <textarea ng-model="order.address" class="form-control"></textarea>
+                <br>
+                <label for="">Tên Nhận Hàng:</label>
+                <input ng-model="order.name" class="form-control" >
+
                 <br>
               </div>
 
               <div class="col">
 
                 <label for="">Ngày Đặt Hàng:</label>
-                <div class="form-control">{{order.createDate|date:'dd-MM-yyyy'}}</div>
+                <div class="form-control">{{order.createDate|date:'dd-MM-yyyy'}}</div><br>
+                <label
+                        for="">Địa chỉ nhận hàng:</label>
+                <textarea ng-model="order.address" class="form-control" ></textarea>
                 <br>
               </div>
             </div>

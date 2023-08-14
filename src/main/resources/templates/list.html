@@ -46,8 +46,9 @@
               <th scope="col">Mã hóa đơn</th>
               <th scope="col">Ngày đặt hàng</th>
               <th scope="col">Địa Chỉ</th>
-
+              <th scope="col">Trạng Thái</th>
               <th scope="col" width="100px">Hành động</th>
+              <th scope="col" width="100px">Hủy Đơn</th>
             </tr>
             </thead>
             <tbody>
@@ -56,9 +57,20 @@
               <td th:text="${order.id }"></td>
               <td  th:text="${order.createDate}"  ></td>
               <td th:text="${order.address}"></td>
+              <td th:text="${order.orderStatus.status}"></td>
               <td><a th:href="@{|/order/detail/${order.id}|}">
                 <button>Xem Đơn</button></a>
               </td>
+
+              <td th:if="${order.orderStatus.id < 3}">
+                <a class="btn btn-danger mt-2" style="width: 150px"
+                   th:href="@{|/order/cancel/${order.id}|}"
+                   onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng?')">
+                  Hủy đơn hàng
+                </a>
+              </td>
+
+
 
 
 

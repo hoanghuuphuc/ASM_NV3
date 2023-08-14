@@ -45,29 +45,27 @@
 							<th scope="col">Mã hóa đơn</th>
 								<th scope="col">Tên Khách hàng</th>
 								<th scope="col">Sản phẩm</th>
+								<th scope="col">Hình ảnh</th>
+
 								<th scope="col">Giá</th>
 								<th scope="col">Số Lượng</th>
 								<th scope="col">Tổng Tiền</th>
 								<th scope="col">Trạng thái</th>
-								<th scope="col" width="100px">Hành động</th>
+
 							</tr>
 						</thead>
 						<tbody>
 								<tr th:each="p: ${order.orderDetails}">
 									<td th:text="${p.id}"></td>
-									<td th:text="${order.account.fullname +'-' + order.account.username }"></td>
+									<td th:text="${order.name +'-' + order.account.username }"></td>
 									<td  th:text="${p.product.name}"  ></td>
+									<td    ><img th:src="@{${p.product.image}} " width="50px"></td>
 									<td th:text="${p.product.price}"></td>
 									<td th:text="${p.quantity}"></td>
 									<td th:text="${p.product.price * p.quantity}"></td>
 									<td>Thanh toán khi nhận hàng</td>
 
 
-									 <td>
-
-
-										      <a class="btn btn-danger mt-2" style="width: 150px" href="/huydonhang/${item.mahd}">Hủy đơn hàng</a>
-										</td>
 
 								</tr>
 

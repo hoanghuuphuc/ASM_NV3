@@ -29,14 +29,20 @@ public class Order  implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	String address;
+	String name;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "Createdate")
 	Date createDate = new Date();
 	@ManyToOne
 	@JoinColumn(name = "Username")
 	Account account;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "order")
 	List<OrderDetail> orderDetails;
+
+	@ManyToOne
+	@JoinColumn(name = "Status")
+	OrderStatus orderStatus;
+
 }

@@ -1,7 +1,10 @@
 package com.poly.asm_nv3.Controller.User;
 
+import com.poly.asm_nv3.Service.AccountService;
 import com.poly.asm_nv3.Service.OrderService;
+import com.poly.asm_nv3.entity.Account;
 import com.poly.asm_nv3.entity.Order;
+import com.poly.asm_nv3.entity.OrderStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +18,13 @@ public class OrderController {
 
     @Autowired
     OrderService orderService;
+    @Autowired
+    AccountService accountService;
 
     @RequestMapping("order/checkout")
-    public String checkout(){
+    public String checkout(HttpServletRequest request,Model m){
+        Account acc=accountService.findUsername(request.getRemoteUser());
+        m.addAttribute("acc",acc);
         return "checkout";
     }
     @RequestMapping("/order/list")
@@ -32,6 +39,20 @@ public class OrderController {
         Order order =orderService.findId(id);
         m.addAttribute("order",orderService.findById(id));
         return "bill";
+
+    }
+    @RequestMapping("/order/cancel/{id}")
+    public String cancelOrder(Model m,@PathVariable("id")Long id,HttpServletRequest request){
+        String username=request.getRemoteUser();
+        Order order =orderService.findOrderByUsername(id,username);
+        if(username.equals(order.getAccount().getUsername())){
+
+            orderService.SaveSatus(order);
+            return "redirect:/order/list";
+
+        }else{
+            return "redirect:/order/list";
+        }
 
     }
     @RequestMapping("bill")

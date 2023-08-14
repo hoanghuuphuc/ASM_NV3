@@ -41,6 +41,6 @@ public class Product  implements Serializable{
 	@OneToMany(mappedBy = "product")
 	List<OrderDetail> orderDetails;
 
-	@OneToMany(mappedBy = "product")
-	List<ProductColor>productColors;
+//	@OneToMany(mappedBy = "product")
+//	List<ProductColor>productColors;
 }

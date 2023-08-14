@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @Controller
 public class OrderController {
@@ -28,9 +31,14 @@ public class OrderController {
         return "checkout";
     }
     @RequestMapping("/order/list")
-    public String list(Model m, HttpServletRequest request){
-        String username=request.getRemoteUser();
-        m.addAttribute("orders",orderService.findByUsername(username));
+    public String list(Model m, HttpServletRequest request) {
+        String username = request.getRemoteUser();
+        List<Order> orders = orderService.findByUsername(username);
+
+        // Sắp xếp danh sách đơn hàng theo thời gian createDate
+        orders.sort(Comparator.comparing(Order::getCreateDate, Collections.reverseOrder()));
+
+        m.addAttribute("orders", orders);
         return "list";
     }
 

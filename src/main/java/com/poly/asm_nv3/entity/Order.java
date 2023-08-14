@@ -1,6 +1,7 @@
 package com.poly.asm_nv3.entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -32,9 +33,8 @@ public class Order  implements Serializable{
 	String name;
 	String Phone;
 
-	@Temporal(TemporalType.DATE)
 	@Column(name = "Createdate")
-	Date createDate = new Date();
+	private Timestamp createDate = new Timestamp(new Date().getTime());
 	@ManyToOne
 	@JoinColumn(name = "Username")
 	Account account;
@@ -45,4 +45,6 @@ public class Order  implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "Status")
 	OrderStatus orderStatus;
+
+
 }

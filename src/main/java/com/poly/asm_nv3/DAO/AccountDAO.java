@@ -10,4 +10,7 @@ public interface AccountDAO extends JpaRepository<Account,String> {
 
     @Query("select p from Account p where p.activation_token =?1")
     Account findToken(String token);
+
+    @Query("select p from Account p where p.reset_token =?1")
+    Account findResetToken(String token);
 }

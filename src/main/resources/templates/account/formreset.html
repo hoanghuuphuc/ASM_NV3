@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quên mật khẩu</title>
+  <link
+          href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+          rel="stylesheet">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/sign-up.css">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+  <style type="text/css">
+    .mgs_errors {
+      color: red;
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body>
+<section class="signup">
+  <div class="container">
+    <div class="signup-content">
+      <form method="post" action="/thay-doi-mat-khau" class="register-form" id="register-form">
+        <div th:if="${script}" th:utext="${script}"></div>
+        <div class="signup-form">
+          <h2 class="form-title">Quên mật khẩu</h2>
+
+          <input type="hidden" name="token" th:value="${token}">
+
+          <div class="input-group">
+            <label for=""><i class="fa fa-envelope-o"></i></label> <input
+                   name="password" id="email"
+                  placeholder="Mật Khẩu Mới"   /> <span
+                  id="emailError" class="mgs_errors"></span>
+
+          </div>
+          <div class="input-group">
+            <label for=""><i class="fa fa-envelope-o"></i></label> <input
+               name="password2" id="email"
+                  placeholder="Xác Nhận Mật Khẩu Mới"   /> <span
+                  id="emailError" class="mgs_errors"></span>
+
+          </div>
+
+
+
+
+
+          <span
+                  id="" class="mgs_errors" th:text="${message}"></span>
+          <div class="form-group form-button">
+            <span id="errorSpan" class="mgs_errors"></span>
+
+            <button type="submit" class="btn btn-primary"
+            >Gửi</button>
+
+
+
+
+
+            <a href="/" class="btn btn-primary "
+               style="color: white; text-decoration: none;"> Quay lại</a>
+
+
+
+          </div>
+
+        </div>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("register-form");
+            const passwordInput = document.getElementsByName("password")[0];
+            const password2Input = document.getElementsByName("password2")[0];
+
+            form.addEventListener("submit", function (event) {
+              const errors = [];
+
+              if (passwordInput.value.trim() === "") {
+                errors.push("Mật khẩu không được bỏ trống.");
+              }
+
+              if (passwordInput.value !== password2Input.value) {
+                errors.push("Mật khẩu xác nhận không khớp.");
+              }
+
+              if (passwordInput.value.length < 6) {
+                errors.push("Mật khẩu phải ít nhất 6 kí tự.");
+              }
+
+              if (errors.length > 0) {
+                event.preventDefault(); // Ngăn submit nếu có lỗi
+                const errorSpan = document.getElementById("errorSpan");
+                errorSpan.textContent = errors.join(" ");
+              }
+            });
+          });
+        </script>
+      </form>
+      <div class="signup-image">
+        <figure>
+          <img src="/images/bg-sign-up.jpg" alt="sing up image">
+        </figure>
+
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  document.getElementById('register-form').addEventListener('submit', function(event) {
+    var password = document.getElementById('password').value;
+    var password2 = document.getElementById('password2').value;
+
+    var passwordError = document.getElementById('passwordError');
+    var password2Error = document.getElementById('password2Error');
+
+    passwordError.textContent = '';
+    password2Error.textContent = '';
+
+    if (password.length < 6) {
+      event.preventDefault();
+      passwordError.textContent = 'Mật khẩu phải có ít nhất 6 kí tự.';
+    }
+
+    if (password !== password2) {
+      event.preventDefault();
+      password2Error.textContent = 'Mật khẩu xác nhận không khớp.';
+    }
+  });
+</script>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

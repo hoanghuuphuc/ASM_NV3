@@ -31,8 +31,8 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
         },
         get amount(){
             return this.items
-            .map(item => item.qty * item.price)
-            .reduce((total,qty)=>total+=qty,0)
+                .map(item => item.qty * item.price)
+                .reduce((total,qty)=>total+=qty,0)
         },
 
         saveToLocalStorege(){
@@ -60,25 +60,29 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 
     $scope.order={
         createDate:new Date(),
-        address:"",
         name:"",
+        address:"",
+        phone:"",
         account:{username: $("#username").text()},
         get orderDetails(){
             return $scope.cart.items.map(item =>{
-               return {
-                   product:{id:item.id},
-                   price:item.price,
-                   quantity:item.qty
-               }
+                return {
+                    product:{id:item.id},
+                    price:item.price,
+                    quantity:item.qty
+                }
             })
         },
         purchase() {
-            if (!this.order || !this.order.name || !this.order.address) {
-                alert("Vui lòng điền đầy đủ thông tin khách hàng.");
-                return;
-            }
+            console.log('hi'+this.name)
+            console.log('hi'+this.address)
+            console.log('hi'+this.phone)
+            // if (!this.order || !this.name || !this.address ||!this.phone) {
+            //     alert("Vui lòng điền đầy đủ thông tin khách hàng.");
+            //     return;
+            // }
 
-            var order = angular.copy(this.order);
+            var order= angular.copy(this.order);
             $http.post("/rest/orders", order)
                 .then(resp => {
                     alert("Đặt Hàng thành công");
@@ -96,4 +100,3 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 
 
 });
-

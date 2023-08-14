@@ -46,87 +46,70 @@
 				<h5 class="text-center">(Cập nhật đầy đủ thông tin của bạn để
 					tiếp tục mua hàng)</h5>
 			</div>
-			<form:form action="update" method="post" modelAttribute="kh">
+			<form action="/account/update" method="post" >
 				<div class="panel-body" style="margin-bottom: 30px;">
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label for="">Tên:</label> <form:input path="hotenkh" type="text"
-									class="form-control" placeholder="Nhập tên"/>
+								<label for="">Tên tài khoản:</label>
+								<input  type="text" class="form-control" placeholder="Nhập tên" th:value="${#request.remoteUser}" disabled/>
 							</div>
 							<div class="form-group">
-								<label for="">Email:</label> <form:input path="email"
-									type="email" class="form-control" 
+								<label for="">Mật Khẩu Củ:</label>
+								<input name="password"
+									type="password" class="form-control"
 									placeholder="Nhập email"/>
 							</div>
-							<div class="form-group">
-								<label for="">Số điện Thoại:</label> <form:input
-									 type="text" class="form-control"
-									path="sdt" placeholder="Nhập số điện thoại"/>
-							</div>
-							<div class="form-group">
-								<label for="">Giới Tính:</label> <form:radiobuttons path="gioitinh" items="${list_gt}" />
-							</div>
-							
-
-						</div>
-
-
-						<div class="col-lg-6">
-							<div class="form-group">
-								<label for="select-input">Tỉnh: </label> <select
-									class="form-control" id="select-input" name="tinhthanhpho">
-									<option value="">-- Chọn Tỉnh --</option>
-									<c:forEach var="item" items="${items}">
-									
-										<option value="${item.id}">${item.tentinhthanhpho}</option>
-									</c:forEach>
-								</select>
-							</div>
-
-							<div class="form-group">
-								<label for="select-input">Huyện:</label> <select
-									class="form-control" id="select-input">
-									<option value="">-- Chọn Huyện --</option>
-									<option value="option1">Option 1</option>
-									<option value="option2">Option 2</option>
-									<option value="option3">Option 3</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="select-input">Xã/Phường:</label> <select
-									class="form-control" id="select-input">
-									<option value="">-- Chọn --</option>
-									<option value="option1">Option 1</option>
-									<option value="option2">Option 2</option>
-									<option value="option3">Option 3</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="text">Địa chỉ cụ thể:</label><br>
-								<form:textarea path="diachi" cols="66" class="form-control" rows="2"
-									placeholder="Nhập địa chỉ (ví dụ: số nhà,tên đường...)"/>
-							</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="form-group">
-								<h9>*Xác nhận đầy đủ thông tin chính xác rồi ấn cập nhật</h9>
-
-
+								<label for="">Mật Khẩu Mới:</label> <input
+									type="password" class="form-control"
+									name="passwordnew" placeholder="Nhập số điện thoại"/>
+							</div>
+							<div class="form-group">
+								<label for="">Xác Nhận Mật Khẩu Mới:</label> <input
+									type="password" class="form-control"
+									name="passwordnew2" placeholder="Nhập số điện thoại"/>
 							</div>
 						</div>
+
 						<div class="col-lg-6">
+							<span th:text="${message}"></span>
+							<span id="message"></span>
 							<div class="form-group">
-								<button class="btn btn-primary ">Cập Nhật</button>
+								<button class="btn btn-primary " type="submit">Cập Nhật</button>
 							</div>
 						</div>
 					</div>
 				</div>
 
 
+				<script>
+					document.addEventListener('DOMContentLoaded', function() {
+						const passwordNew = document.querySelector('input[name="passwordnew"]');
+						const passwordNew2 = document.querySelector('input[name="passwordnew2"]');
+						const updateButton = document.querySelector('button[type="submit"]');
+
+						updateButton.addEventListener('click', function(event) {
+							if (passwordNew.value !== passwordNew2.value) {
+								event.preventDefault();
+								showMessage('Mật khẩu mới không khớp.');
+							} else if (passwordNew.value.length < 6) {
+								event.preventDefault();
+								showMessage('Mật khẩu mới phải có ít nhất 6 kí tự.');
+							}
+						});
+
+						function showMessage(message) {
+							const messageElement = document.getElementById('message');
+							messageElement.innerHTML = `<div class="alert alert-danger">${message}</div>`;
+						}
+					});
+				</script>
 
 
-			</form:form>
+			</form>
 
 		</div>
 	</div>
@@ -148,5 +131,6 @@
 	<!-- Google Map -->
 
 	<!-- End Google Map -->
+
 </body>
 </html>

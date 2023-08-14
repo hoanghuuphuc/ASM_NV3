@@ -55,5 +55,12 @@ public class Account  implements Serializable{
 		String token = encrypt(plaintext); // encrypt the combination
 		this.activation_token = token; // set the activation token on the account
 	}
+	public void generateResetToken() {
+		String identifier = UUID.randomUUID().toString(); // generate a unique identifier
+		long timestamp = new Date().getTime(); // get the current timestamp
+		String plaintext = identifier + ":" + timestamp; // combine the identifier and timestamp
+		String token = encrypt(plaintext); // encrypt the combination
+		this.reset_token = token; // set the reset token on the account
+	}
 
 }

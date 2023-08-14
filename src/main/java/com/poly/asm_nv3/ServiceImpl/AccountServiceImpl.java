@@ -52,6 +52,24 @@ public class AccountServiceImpl implements AccountService {
 
         return acc;
     }
+    @Override
+    public Account SavePassReset(Account account) {
+        String encodedPassword = passwordEncoder.encode(account.getPassword());
+        account.setPassword(encodedPassword);
+        account.setReset_token(null);
+        account=accountDAO.save(account);
+        return account;
+    }
+
+    @Override
+    public Account ChangePassword(Account acc) {
+        System.out.println(acc.getPassword());
+        String encodedPassword = passwordEncoder.encode(acc.getPassword());
+        acc.setPassword(encodedPassword);
+        acc=accountDAO.save(acc);
+
+        return acc;
+    }
 
     @Override
     public Account findUsername(String TaiKhoan) {
@@ -70,4 +88,17 @@ public class AccountServiceImpl implements AccountService {
         account =accountDAO.save(account);
         return account;
     }
+
+    @Override
+    public Account SaveTokenReset(Account account) {
+        account.generateResetToken();
+        account=accountDAO.save(account);
+        return account;
+    }
+
+    @Override
+    public Account findResetToken(String token) {
+        return accountDAO.findResetToken(token);
+    }
+
 }

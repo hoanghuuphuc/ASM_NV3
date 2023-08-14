@@ -57,7 +57,7 @@
 						<tbody>
 								<tr th:each="p: ${order.orderDetails}">
 									<td th:text="${p.id}"></td>
-									<td th:text="${order.name +'-' + order.account.username }"></td>
+									<td th:text="${order.name +'-' + order.account.username +'-' +order.phone}"></td>
 									<td  th:text="${p.product.name}"  ></td>
 									<td    ><img th:src="@{${p.product.image}} " width="50px"></td>
 									<td th:text="${p.product.price}"></td>

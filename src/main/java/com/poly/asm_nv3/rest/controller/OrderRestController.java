@@ -14,7 +14,7 @@ public class OrderRestController {
     @Autowired
     OrderService orderService;
 
-    @PostMapping()
+    @PostMapping
     public Order create(@RequestBody JsonNode orderData){
         return orderService.create(orderData);
     }

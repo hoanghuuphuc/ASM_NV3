@@ -60,8 +60,8 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 
     $scope.order={
         createDate:new Date(),
-        name:"",
         address:"",
+        name:"",
         phone:"",
         account:{username: $("#username").text()},
         get orderDetails(){
@@ -74,15 +74,20 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
             })
         },
         purchase() {
-            console.log('hi'+this.name)
-            console.log('hi'+this.address)
-            console.log('hi'+this.phone)
-            // if (!this.order || !this.name || !this.address ||!this.phone) {
-            //     alert("Vui lòng điền đầy đủ thông tin khách hàng.");
-            //     return;
-            // }
+            if (!$scope.order.name || !$scope.order.address || !$scope.order.phone) {
+                alert("Vui lòng điền đầy đủ thông tin đặt hàng.");
+                return;
+            }
 
-            var order= angular.copy(this.order);
+            // Kiểm tra định dạng số điện thoại (sử dụng regex)
+            var phoneRegex = /^[0-9]{10,11}$/; // Định dạng: 10 hoặc 11 chữ số
+            if (!phoneRegex.test($scope.order.phone)) {
+                alert("Số điện thoại không đúng định dạng.");
+                return;
+            }
+
+
+            var order= angular.copy(this);
             $http.post("/rest/orders", order)
                 .then(resp => {
                     alert("Đặt Hàng thành công");

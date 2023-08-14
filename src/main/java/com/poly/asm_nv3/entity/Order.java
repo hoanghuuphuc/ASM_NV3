@@ -30,7 +30,8 @@ public class Order  implements Serializable{
 	Long id;
 	String address;
 	String name;
-	String phone;
+	String Phone;
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "Createdate")
 	Date createDate = new Date();
@@ -41,9 +42,7 @@ public class Order  implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "order")
 	List<OrderDetail> orderDetails;
-
 	@ManyToOne
 	@JoinColumn(name = "Status")
 	OrderStatus orderStatus;
-
 }

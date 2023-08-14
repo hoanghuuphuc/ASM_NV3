@@ -1,0 +1,68 @@
+<section class="py-2">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="card mb-2">
+            <div class="card-body">
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <label for="inputCode" class="form-label">Code</label>
+                        <input ng-model="form.code" type="text" class="form-control" id="inputCode">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputName" class="form-label">Name</label>
+                        <input ng-model="form.name" type="text" class="form-control" id="inputName">
+                    </div>
+                    <div class="col-12">
+                        <div class="d-grid gap-2 d-md-block">
+                            <button ng-click="create()" class="btn btn-success" type="button">Create</button>
+                            <button ng-click="update()" class="btn btn-secondary" type="button">Update</button>
+                            <button ng-click="remove(form)" class="btn btn-danger" type="button">Delete</button>
+                            <button ng-click="reset()" class="btn btn-info" type="button">Clear</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Code</th>
+                                <th scope="col">Name</th>
+                                <th scope="col" style="width: 20px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in pager.items">
+                                <th scope="row">{{item.id}}</th>
+                                <td>{{item.code}}</td>
+                                <td>{{item.name}}</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <button ng-click="edit(item)" class="btn btn-secondary" type="button"><i
+                                                class="bi bi-pencil-square"></i></button>
+                                        <button ng-click="remove(item)" class="btn btn-danger" type="button"><i
+                                                class="bi bi-trash-fill"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-2">
+        <nav class="">
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><button ng-click="pager.first()" class="page-link" href="#">First</button></li>
+                <li class="page-item"><button ng-click="pager.prev()" class="page-link" href="#">Prev</button></li>
+                <li class="page-item"><button class="page-link">{{pager.page + 1}}/{{pager.count}}</button></li>
+                <li class="page-item"><button ng-click="pager.next()" class="page-link" href="#">Next</button></li>
+                <li class="page-item"><button ng-click="pager.last()" class="page-link" href="#">Last</button></li>
+            </ul>
+        </nav>
+    </div>
+</section>

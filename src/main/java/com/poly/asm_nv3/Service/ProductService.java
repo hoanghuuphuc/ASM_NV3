@@ -11,4 +11,7 @@ public interface ProductService {
     List<Product> findByCategory(int id);
     Product findById(Integer id);
 
+    Product create(Product product);
+
+    void delete(Integer id);
 }

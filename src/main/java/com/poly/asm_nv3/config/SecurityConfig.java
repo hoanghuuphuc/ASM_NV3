@@ -35,13 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // phan quyen su dung
         http.authorizeRequests()
-                .antMatchers("/Admin").hasRole("Admin")
-                //		.antMatchers("/home/users").hasAnyRole("ADMIN","USER")
                 .antMatchers("/order/checkout").authenticated()
+                .antMatchers("/admin/**").hasAnyRole("ADMIN","DIRE").antMatchers("/api/authorities").hasRole("DIRE")
+                //		.antMatchers("/home/users").hasAnyRole("ADMIN","USER")
                 .anyRequest().permitAll();// anonymous
 
         // dieu khien loi truy cap khong dung vai tro
-        http.exceptionHandling().accessDeniedPage("/auth/signin");// [/error]
+        http.exceptionHandling().accessDeniedPage("/login/unauthoried");// [/error]
 //â
         // giao dien dang nhap
         http.formLogin().loginPage("/auth/signin")

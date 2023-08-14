@@ -27,7 +27,7 @@ public class Account  implements Serializable{
 
 	String fullname;
 
-	String photo;
+
 
 	String activation_token;
 

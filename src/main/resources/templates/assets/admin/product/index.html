@@ -1,0 +1,115 @@
+<section class="py-2">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="card mb-2">
+            <div class="card-body">
+                <form class="row g-3">
+                    <div class="col-md-12 row">
+                    <div class="col-md-4">
+                    	<img ng-src="{{'/assets/images/' + form.photo}}" class="img-thumbnail" alt="{{form.name}}">
+                    	</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputName" class="form-label">Name</label>
+                        <input ng-model="form.name" type="text" class="form-control" id="inputName">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPrice" class="form-label">Price</label>
+                        <input ng-model="form.price" type="number" class="form-control" id="inputPrice">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputImage" class="form-label">Image</label>
+                        <input type="file" onchange="angular.element(this).scope().imageChanged(this.files)" class="form-control" id="inputImage">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCategory" class="form-label">Category</label>
+                        <select ng-model="form.category.id" id="inputCategory" class="form-select">
+                            <option ng-repeat="category in categories" ng-value="category.id">{{category.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCreateDate" class="form-label">Create date</label>
+                        <input ng-model="form.createDate" type="date" class="form-control" id="inputCreateDate">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputAddress22" class="form-label">Avaliable</label>
+                        <br>
+                        <div class="form-control">
+                            <div class="form-check form-check-inline">
+                                <input ng-model="form.available" type="radio" ng-value="true" name="available"
+                                    class="form-check-input" id="inputAvailableYes">
+                                <label class="form-check-label" for="inputAvailableYes">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input ng-model="form.available" type="radio" ng-value="false" name="available"
+                                    class="form-check-input" id="inputAvailableNo">
+                                <label class="form-check-label" for="inputAvailableNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="inputdescription" class="form-label">Description</label>
+                        <textarea ng-model="form.description" class="form-control" id="inputdescription" rows="3"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-grid gap-2 d-md-block">
+                            <button ng-click="create()" class="btn btn-success" type="button">Create</button>
+                            <button ng-click="update()" class="btn btn-secondary" type="button">Update</button>
+                            <button ng-click="remove(form)" class="btn btn-danger" type="button">Delete</button>
+                            <button ng-click="reset()" class="btn btn-info" type="button">Clear</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Create date</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Available</th>
+                                <th scope="col" style="width: 20px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in pager.items">
+                                <th scope="row">{{item.id}}</th>
+                                <td>{{item.name}}</td>
+                                <td>{{item.price}}</td>
+                                <td>{{item.createDate | date : 'dd-MM-yyyy'}}</td>
+                                <td>{{item.photo}}</td>
+                                <td>{{item.category.name}}</td>
+                                <td>{{item.available ? 'Yes' : 'No'}}</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <button ng-click="edit(item)" class="btn btn-secondary" type="button"><i
+                                                class="bi bi-pencil-square"></i></button>
+                                        <button ng-click="remove(item)" class="btn btn-danger" type="button"><i
+                                                class="bi bi-trash-fill"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-2">
+        <nav class="">
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><button ng-click="pager.first()" class="page-link" href="#">First</button></li>
+                <li class="page-item"><button ng-click="pager.prev()" class="page-link" href="#">Prev</button></li>
+                <li class="page-item"><button class="page-link">{{pager.page + 1}}/{{pager.count}}</button></li>
+                <li class="page-item"><button ng-click="pager.next()" class="page-link" href="#">Next</button></li>
+                <li class="page-item"><button ng-click="pager.last()" class="page-link" href="#">Last</button></li>
+            </ul>
+        </nav>
+    </div>
+</section>

@@ -86,54 +86,20 @@
 		<!-- footer section -->
 
 		<!-- jQery -->
+		<script src="/js/shopping-cart-app.js"></script>
 		<script src="/js/jquery-3.4.1.min.js"></script>
-		<!-- popper js -->
-		<script
-			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-			crossorigin="anonymous">
-			
-		</script>
-			<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<script>
-		function removeSuccessParamFromURL() {
-		    if (window.history && window.history.replaceState) {
-		        var url = window.location.href;
-		        var urlParams = new URLSearchParams(window.location.search);
-		        urlParams.delete('success');
-		        var newURL = url.split('?')[0] + '?' + urlParams.toString();
-		        window.history.replaceState({}, '', newURL);
-		    }
-		}
-			// Kiểm tra query parameter và hiển thị thông báo thành công
-			window.onload = function() {
-				var urlParams = new URLSearchParams(window.location.search);
-				var successParam = urlParams.get('success');
-				if (successParam === 'true') {
-					showSuccessMessage("Hủy đơn hàng thành công");
-					removeSuccessParamFromURL();
-				}if (successParam === 'dathang') {
-					showSuccessMessage("Đặt hàng thành công");
-					removeSuccessParamFromURL();
-				}
-			}
+		<script src="/js/bootstrap.js"></script>
 
-			function showSuccessMessage(message) {
-				swal("Thông báo", message, "success");
-			}
-		</script>
-		<!-- bootstrap js -->
-		<script src="js/bootstrap.js"></script>
 		<!-- owl slider -->
 		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-			
+				src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+
 		</script>
 		<!-- custom js -->
-		<script src="js/custom.js"></script>
+		<script src="/js/custom.js"></script>
 		<!-- Google Map -->
 		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
 		<!-- End Google Map -->
 </main>
 </body>

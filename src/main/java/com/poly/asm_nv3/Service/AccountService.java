@@ -2,7 +2,8 @@ package com.poly.asm_nv3.Service;
 
 
 import com.poly.asm_nv3.entity.Account;
-import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 public interface AccountService {
@@ -16,4 +17,11 @@ public interface AccountService {
     Account SaveTokenReset(Account account);
 
     Account findResetToken(String token);
+
+    List<Account> getAdministrators();
+    List<Account >findAll();
+
+    Account create(Account account);
+
+    Account update(Account account);
 }

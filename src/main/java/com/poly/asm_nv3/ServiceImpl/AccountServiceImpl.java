@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -28,7 +27,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account saveAccount(Account acc,String RoleId) {
         acc.setFullname(acc.getFullname());
-        acc.setPhoto("1");
+
         acc.setActive(false);
         acc.generateActivationToken();
         acc.setUsername(acc.getUsername());
@@ -99,6 +98,44 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account findResetToken(String token) {
         return accountDAO.findResetToken(token);
+    }
+
+    @Override
+    public List<Account> getAdministrators() {
+        return accountDAO.getAdministrators();
+    }
+
+    @Override
+    public List<Account> findAll() {
+
+        return accountDAO.findAll();
+    }
+
+    @Override
+    public Account create(Account account) {
+
+        String encodedPassword = passwordEncoder.encode(account.getPassword());
+        account.setPassword(encodedPassword);
+
+            // tạo vai trò khi tài khoản mới
+                Authority authority = new Authority();
+
+                authority.setAccount(account);
+
+                Role role = new Role();
+                role.setId("CUST");
+                authority.setRole(role);
+
+                authorityDAO.save(authority);
+        return accountDAO.save(account);
+    }
+
+    @Override
+    public Account update(Account account) {
+        String encodedPassword = passwordEncoder.encode(account.getPassword());
+        account.setPassword(encodedPassword);
+        accountDAO.save(account);
+        return account;
     }
 
 }

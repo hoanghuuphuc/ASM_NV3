@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.text-right {
+	text-align: right !important;
+}
+
+.btn-remove {
+	margin-left: auto;
+	font-size: 1.5rem;
+	float: right;
+	line-height: 1;
+	color: #000;
+}
+
+.login {
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.cart-btn {
+    position: relative;
+}
+
+.cart-btn:hover .dropdown-menu {
+    display: block;	
+ }

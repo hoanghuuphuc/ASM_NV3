@@ -69,4 +69,15 @@ public class OrderServiceImpl implements OrderService {
         return orderDAO.save(order);
     }
 
+    @Override
+    public List<Order> findAll() {
+        return orderDAO.findAll();
+    }
+
+    @Override
+    public Order save(Order existingOrder) {
+        return orderDAO.save(existingOrder);
+    }
+
+
 }

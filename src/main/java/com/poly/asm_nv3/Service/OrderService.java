@@ -14,4 +14,8 @@ public interface OrderService {
     List<Order> findByUsername(String username);
     Order findOrderByUsername(Long id,String username);
     Order SaveSatus(Order order);
+
+    List<Order> findAll();
+
+    Order save(Order existingOrder);
 }

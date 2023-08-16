@@ -1,0 +1,103 @@
+<section class="py-2">
+  <div class="container px-4 px-lg-5 mt-5">
+
+    <div class="card mb-2">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+
+              <th scope="col">Username</th>
+              <th scope="col">fullname</th>
+              <th scope="col">address</th>
+              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+              <th scope="col" style="width: 20px;">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in pager.items">
+              <th scope="row">{{item.id}}</th>
+              <th scope="row">{{item.account.username}}</th>
+              <th scope="row">{{item.account.fullname}}</th>
+              <th scope="row">{{item.address}}</th>
+              <th scope="row">{{item.createDate}}</th>
+              <td><select ng-model="item.orderStatus.id" id="inputCategory" class="form-select" ng-change="update(item)">
+                <option ng-repeat="status in status" ng-value="status.id" >{{status.status}}</option>
+              </select></td>
+              <td>
+                <div class="btn-group btn-group-sm">
+                  <button ng-click="edit(item)" class="btn btn-secondary" type="button"><i
+                          class="bi bi-pencil-square"></i></button>
+
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <!-- Thêm modal cho Edit Order -->
+          <div class="modal fade" id="editModal" tabindex="-1" role="document" aria-labelledby="editModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content" style="width: 800px; height: 500px;">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editModalLabel">Edit Order</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="closeOrder()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Fullname: {{ selectedOrder.account.fullname }}</p>
+                  <p>Phone: {{ selectedOrder.phone }}</p>
+                  <p>address: {{ selectedOrder.address }}</p>
+                </div>
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th> <!-- Thêm cột Total -->
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr ng-repeat="orderDetail in selectedOrder.orderDetails">
+                    <td>{{ orderDetail.product.name }}</td>
+                    <td><img ng-src="/assets/images/{{ orderDetail.product.image }}" width="50" alt="{{ orderDetail.product.name }}"></td>
+                    <td>{{ orderDetail.price }}</td>
+                    <td>{{ orderDetail.quantity }}</td>
+                    <td>{{ orderDetail.price * orderDetail.quantity }}</td> <!-- Tính và hiển thị tổng tiền cho order detail -->
+                  </tr>
+                  <tr>
+                    <td colspan="4"></td>
+                    <td><strong>Total: {{ calculateTotal(selectedOrder.orderDetails) }}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+
+                <div class="modal-footer">
+                  <button type="button" ng-click="closeOrder()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-2">
+    <nav class="">
+      <ul class="pagination justify-content-center">
+        <li class="page-item"><button ng-click="pager.first()" class="page-link" href="#">First</button></li>
+        <li class="page-item"><button ng-click="pager.prev()" class="page-link" href="#">Prev</button></li>
+        <li class="page-item"><button class="page-link">{{pager.page + 1}}/{{pager.count}}</button></li>
+        <li class="page-item"><button ng-click="pager.next()" class="page-link" href="#">Next</button></li>
+        <li class="page-item"><button ng-click="pager.last()" class="page-link" href="#">Last</button></li>
+      </ul>
+    </nav>
+  </div>
+</section>

@@ -21,6 +21,9 @@ app.config($routeProvider => {
     }).when("/role", {
         templateUrl: "/assets/admin/role/index.html?" + Math.random(),
         controller: "role-ctrl"
+    }).when("/order", {
+        templateUrl: "/assets/admin/order/index.html?" + Math.random(),
+        controller: "order-ctrl"
     })
     .when("/unauthorized", {
         templateUrl: "/assets/admin/authority/unauthorized.html?" + Math.random(),

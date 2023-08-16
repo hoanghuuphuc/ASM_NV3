@@ -59,12 +59,12 @@
 									<td th:text="${p.id}"></td>
 									<td th:text="${order.name +'-' + order.account.username +'-' +order.phone}"></td>
 									<td  th:text="${p.product.name}"  ></td>
-									<td    ><img th:src="@{${p.product.image}} " width="50px"></td>
+									<td    ><img th:src="@{|/assets/images/${p.product.image}|} " width="50px"></td>
 									<td th:text="${p.product.price}"></td>
 									<td th:text="${p.quantity}"></td>
 									<td th:text="${p.product.price * p.quantity}"></td>
 									<td>Thanh toán khi nhận hàng</td>
-
+									
 
 
 								</tr>

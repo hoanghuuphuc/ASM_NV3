@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service
 public class UploadServiceImpl implements UploadService {
@@ -25,8 +27,16 @@ public class UploadServiceImpl implements UploadService {
             directory.mkdirs();
         }
 
-        String fileName = System.currentTimeMillis() + "-" + file.getOriginalFilename();
-        File savedFile = new File(directory, fileName);
+       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+    String dateTimeString = dateFormat.format(new Date());
+
+    // Get the original filename
+    String originalFilename = file.getOriginalFilename();
+
+    // Generate the filename using date and time information
+    String fileName = dateTimeString + "-" + originalFilename;
+
+    File savedFile = new File(directory, fileName);
 
         try {
             System.out.println(directory);

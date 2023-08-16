@@ -1,12 +1,12 @@
-app.controller("category-ctrl", function ($rootScope, $scope, $http) {
-	$rootScope.title = "Category";
-	$rootScope.currPage = "category";
+app.controller("role-ctrl", function ($rootScope, $scope, $http) {
+    $rootScope.title = "Role";
+    $rootScope.currPage = "role";
     $scope.items = [];
-    $scope.categories = [];
+    $scope.role = [];
     $scope.form = {};
     $scope.init = () => {
         // load categories
-        $http.get("/api/categories").then(resp => {
+        $http.get("/api/roles").then(resp => {
             $scope.items = resp.data;
         });
     }
@@ -22,7 +22,7 @@ app.controller("category-ctrl", function ($rootScope, $scope, $http) {
 
     $scope.create = () => {
         var item = angular.copy($scope.form);
-        $http.post("/api/categories", item).then(resp => {
+        $http.post("/api/roles", item).then(resp => {
             $scope.items.push(resp.data);
             $scope.reset();
             alert("Thêm danh mục thành công");
@@ -34,7 +34,7 @@ app.controller("category-ctrl", function ($rootScope, $scope, $http) {
 
     $scope.update = () => {
         var item = angular.copy($scope.form);
-        $http.put("/api/categories/" + item.id, item).then(resp => {
+        $http.put("/api/roles/" + item.id, item).then(resp => {
             var index = $scope.items.findIndex(p => p.id = item.id);
             $scope.items[index] = item;
             alert("Cập danh mục phẩm thành công");
@@ -52,7 +52,7 @@ app.controller("category-ctrl", function ($rootScope, $scope, $http) {
             idToDelete = $scope.form.id;
         }
         if (idToDelete) {
-            $http.delete("/api/categories/" + idToDelete).then(resp => {
+            $http.delete("/api/roles/" + idToDelete).then(resp => {
                 var index = $scope.items.findIndex(p => p.id === idToDelete);
                 if (index !== -1) {
                     $scope.items.splice(index, 1);

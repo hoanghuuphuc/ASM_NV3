@@ -56,17 +56,27 @@ app.controller("product-ctrl", function ($rootScope, $scope, $http) {
     }
 
     $scope.remove = (item) => {
-        var item = angular.copy($scope.form);
-        $http.delete("/api/products/" + item.id).then(resp => {
-            var index = $scope.items.findIndex(p => p.id = item.id);
-            $scope.items.splice(index, 1);
-            $scope.reset();
-            alert("Xoá sản phẩm thành công");
-        }, error => {
-            alert("Xoá sản phẩm thất bại");
-            console.log("Error", error);
-        });
+        var idToDelete;
+        if (item.id) {
+            idToDelete = item.id;
+        } else if ($scope.form.id) {
+            idToDelete = $scope.form.id;
+        }
+        if (idToDelete) {
+            $http.delete("/api/products/" + idToDelete).then(resp => {
+                var index = $scope.items.findIndex(p => p.id === idToDelete);
+                if (index !== -1) {
+                    $scope.items.splice(index, 1);
+                }
+                $scope.reset(); // Clear the form
+                alert("Xoá Sản Phẩm thành công");
+            }, error => {
+                alert("Xoá Sản Phẩm thất bại");
+                console.log("Error", error);
+            });
+        }
     }
+
 
     $scope.imageChanged = (files) => {
         var form = new FormData();

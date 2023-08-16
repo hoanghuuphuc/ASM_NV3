@@ -43,11 +43,14 @@
                     	<a class="nav-link" th:href="@{/admin/#!role}" ng-class="{active : currPage == 'role'}">Role</a>
                     </li>
                     <li class="nav-item">
+                    	<a class="nav-link" th:href="@{/admin/#!status}" ng-class="{active : currPage == 'status'}">Status</a>
+                    </li>
+                    <li class="nav-item">
                     	<a class="nav-link" th:href="@{/admin/#!authorize}" ng-class="{active : currPage == 'authorize'}">Authorizing</a>
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <a class="btn btn-outline-light" href="/security/logout">
+                    <a class="btn btn-outline-light" href="/auth/logoff">
                         Đăng xuất
                     </a>
                 </div>
@@ -67,6 +70,8 @@
     <script src="/assets/admin/category/category-ctrl.js"></script>
     <script src="/assets/admin/authority/authority-ctrl.js"></script>
     <script src="/assets/admin/account/account-ctrl.js"></script>
+    <script src="/assets/admin/orderStatus/status-ctrl.js"></script>
+    <script src="/assets/admin/role/role-ctrl.js"></script>
 </body>
 
 </html>

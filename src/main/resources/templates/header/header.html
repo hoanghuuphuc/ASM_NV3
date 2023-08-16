@@ -33,6 +33,8 @@
 										<span class="caret">[[${#request.remoteUser}]]</span>
 									</button>
 									<div class="dropdown-menu dropdown-menu-right" style="width: 250px">
+										<a class="dropdown-item" href="/admin" th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('DIRE')}">Trang Quản Trị</a>
+
 										<a class="dropdown-item" href="/account/update">Đổi Mật Khẩu</a>
 										<a class="dropdown-item" th:href="@{/auth/logoff}">Đăng Xuất</a>
 										<a class="dropdown-item" href="/order/list">Đơn Hàng Đã Mua</a>

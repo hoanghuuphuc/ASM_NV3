@@ -66,6 +66,7 @@
 								<tr>
 									<th class="shoping__product">Sản phẩm</th>
 									<th>Giá</th>
+
 									<th>Số lượng</th>
 									<th>Tổng tiền</th>
 									<th></th>
@@ -74,7 +75,7 @@
 							<tbody>
 										<tr ng-repeat="item in cart.items">
 											<td class="shoping__cart__item"><img
-												src="{{item.image}}" alt="">
+												src="/assets/images/{{item.image}}" alt="">
 												<h5>{{item.name}}</h5></td>
 											<td class="shoping__cart__price">{{item.price}}</td>
 											<td class="shoping__cart__quantity">

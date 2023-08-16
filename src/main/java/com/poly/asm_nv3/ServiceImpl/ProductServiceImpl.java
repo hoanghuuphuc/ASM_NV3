@@ -46,8 +46,10 @@ public class ProductServiceImpl implements ProductService {
         productDAO.deleteById(id);
     }
 
-
-
+    @Override
+    public Product update(Product product) {
+        return productDAO.save(product);
+    }
 
 
 }

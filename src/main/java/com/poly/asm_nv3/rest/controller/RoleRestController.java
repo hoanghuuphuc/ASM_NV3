@@ -1,12 +1,10 @@
 package com.poly.asm_nv3.rest.controller;
 
 import com.poly.asm_nv3.Service.RoleService;
+import com.poly.asm_nv3.entity.Category;
 import com.poly.asm_nv3.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +20,23 @@ public class RoleRestController {
     @GetMapping
     public List<Role> getAll() {
         return roleService.findAll();
+    }
+
+    @PostMapping
+    public Role create(@RequestBody Role role) {
+        return roleService.create(role);
+    }
+
+    @PutMapping("/{id}")
+    public Role update(@PathVariable("id") String id, @RequestBody Role role) {
+
+        return roleService.update(role);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") String id) {
+
+        roleService.delete(id);
     }
 
 }

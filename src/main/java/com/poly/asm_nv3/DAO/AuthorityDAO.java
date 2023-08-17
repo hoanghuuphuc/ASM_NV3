@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface AuthorityDAO extends JpaRepository<Authority,Integer> {
 
-    @Query("SELECT DISTINCT au FROM Authority au WHERE au.account IN :accounts")
-    List<Authority> authoritiesOf(@Param("accounts") List<Account> accounts);
+    @Query("SELECT DISTINCT au FROM Authority au WHERE au.account IN ?1")
+    List<Authority> authoritiesOf( List<Account> accounts);
 }

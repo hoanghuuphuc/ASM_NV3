@@ -18,9 +18,7 @@ public class AuthorityRestController {
     public List<Authority> findAll(@RequestParam("admin") Optional<Boolean> admin) {
         if (admin.orElse(false)) {
             List<Authority> authorities = authorityService.findAuthoritiesOfAdministrators();
-            for (Authority authority : authorities) {
-                System.out.println(authority.getAccount().getUsername());
-            }
+
             return authorities;
         }
         return authorityService.findAll();

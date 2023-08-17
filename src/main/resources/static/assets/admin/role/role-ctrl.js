@@ -5,7 +5,7 @@ app.controller("role-ctrl", function ($rootScope, $scope, $http) {
     $scope.role = [];
     $scope.form = {};
     $scope.init = () => {
-        // load categories
+
         $http.get("/api/roles").then(resp => {
             $scope.items = resp.data;
         });

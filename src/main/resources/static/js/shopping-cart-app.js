@@ -2,6 +2,7 @@ const app=angular.module("shopping-cart-app",[]);
 
 app.controller("shopping-cart-ctrl",function($scope,$http){
 
+
     $scope.cart = {
         items: [],
         // Thêm sản phẩm vào giỏ hàng
@@ -35,6 +36,7 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
                 .reduce((total,qty)=>total+=qty,0)
         },
 
+
         saveToLocalStorege(){
             var json=JSON.stringify(angular.copy(this.items));
             localStorage.setItem("cart",json);
@@ -55,6 +57,7 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
             this.saveToLocalStorege(); // Lưu thay đổi vào dữ liệu lưu trữ cục bộ
         },
     }
+
 
     $scope.cart.loadFromLocalStorage();
 
